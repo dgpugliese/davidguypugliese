@@ -671,7 +671,7 @@ footer.foot {
   .topbar-inner { padding: 14px 20px; gap: 12px; }
   .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
   .mark .mark-name { display: none; }
-  .nav-toggle-btn { display: inline-flex; }
+  .nav-toggle-btn { display: inline-flex; margin-left: auto; }
   .topnav {
     display: none;
     position: absolute; top: 100%; left: 0; right: 0;
