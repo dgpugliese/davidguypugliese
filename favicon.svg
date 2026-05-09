@@ -2,6 +2,6 @@
   <rect width="64" height="64" fill="#0a1f3d"/>
   <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
         font-family="Georgia, 'Cormorant Garamond', serif"
-        font-size="30" font-weight="500" font-style="italic"
-        fill="#3b82f6" letter-spacing="-1">DGP</text>
+        font-size="30" font-weight="500"
+        fill="#d4b27e" letter-spacing="0">DGP</text>
 </svg>

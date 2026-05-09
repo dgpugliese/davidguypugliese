@@ -2,8 +2,8 @@
   --navy: #0a1f3d;
   --navy-deep: #061327;
   --navy-bright: #1e3a5f;
-  --accent: #3b82f6;
-  --accent-bright: #60a5fa;
+  --accent: #b08d57;
+  --accent-bright: #d4b27e;
   --paper: #fafbfc;
   --paper-soft: #f1f5f9;
   --on-navy: #f1f5f9;
@@ -18,8 +18,8 @@ html.dark {
   --navy: #1e3a5f;
   --navy-deep: #0a1f3d;
   --navy-bright: #2d4f7a;
-  --accent: #60a5fa;
-  --accent-bright: #93c5fd;
+  --accent: #c9a877;
+  --accent-bright: #e3c897;
   --paper: #050a14;
   --paper-soft: #0a1224;
   --on-navy: #f1f5f9;
@@ -56,28 +56,13 @@ body {
   gap: 32px;
 }
 .mark {
-  display: flex; align-items: center; gap: 14px;
-  font-family: 'Cormorant Garamond', serif;
+  display: flex; align-items: center;
   text-decoration: none;
 }
-.mark .monogram {
-  font-weight: 500; font-size: 24px;
-  font-style: italic;
-  letter-spacing: 0.5px;
-  color: var(--accent);
-}
-.mark .mark-rule {
-  display: inline-block;
-  width: 1px; height: 22px;
-  background: var(--rule);
-}
-.mark .mark-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 2.6px;
-  color: var(--ink-soft);
+.mark img {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 .topnav { display: flex; gap: 36px; }
 .topnav a {
@@ -120,7 +105,7 @@ body {
 .hero::after {
   content: ""; position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(96,165,250,0.12), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212,178,126,0.10), transparent 50%),
     radial-gradient(ellipse at 10% 90%, rgba(0,0,0,0.30), transparent 60%);
   pointer-events: none;
 }
@@ -227,8 +212,8 @@ body {
   position: absolute;
   inset: 4% -6% -4% -6%;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 38%, rgba(96,165,250,0.42), transparent 70%),
-    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(59,130,246,0.22), transparent 75%);
+    radial-gradient(ellipse 60% 50% at 50% 38%, rgba(212,178,126,0.36), transparent 70%),
+    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(176,141,87,0.20), transparent 75%);
   filter: blur(28px);
   pointer-events: none;
   z-index: 0;
@@ -260,7 +245,7 @@ body {
 .hero-stats {
   background: var(--navy-deep);
   color: var(--on-navy);
-  border-top: 1px solid rgba(96,165,250,0.18);
+  border-top: 1px solid rgba(212,178,126,0.20);
 }
 .hero-stats-inner {
   max-width: 1320px; margin: 0 auto;
@@ -270,7 +255,7 @@ body {
   gap: 56px;
 }
 .hstat {
-  border-left: 1px solid rgba(96,165,250,0.22);
+  border-left: 1px solid rgba(212,178,126,0.22);
   padding-left: 22px;
 }
 .hstat:first-child { border-left: none; padding-left: 0; }
@@ -584,7 +569,7 @@ footer.foot {
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 48px;
   padding-bottom: 56px;
-  border-bottom: 1px solid rgba(96,165,250,0.22);
+  border-bottom: 1px solid rgba(212,178,126,0.22);
 }
 .foot-h {
   font-family: 'Cormorant Garamond', serif;
