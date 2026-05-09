@@ -19,7 +19,10 @@
       <span class="monogram">DGP.</span>
       <span class="mark-name">David Guy Pugliese</span>
     </a>
-    <nav class="topnav">
+    <button class="nav-toggle-btn" aria-expanded="false" aria-controls="topnav" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topnav" id="topnav">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#stack">Stack</a>
@@ -499,6 +502,25 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.nav-toggle-btn');
+    var nav = document.getElementById('topnav');
+    if (!btn || !nav) return;
+    function setOpen(open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      nav.classList.toggle('open', open);
+      document.body.classList.toggle('nav-open', open);
+    }
+    btn.addEventListener('click', function () {
+      setOpen(btn.getAttribute('aria-expanded') !== 'true');
+    });
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+  })();
+</script>
 
 </body>
 </html>
