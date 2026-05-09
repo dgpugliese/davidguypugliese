@@ -668,7 +668,12 @@ footer.foot {
 @media (max-width: 680px) {
   .topbar-inner { padding: 12px 20px; gap: 12px; }
   .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
-  .mark img { height: 38px; }
+  .mark img {
+    height: 42px;
+    width: 60px;
+    object-fit: cover;
+    object-position: 0% 50%;
+  }
   .nav-toggle-btn { display: inline-flex; margin-left: auto; }
   .topnav {
     display: none;
