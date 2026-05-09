@@ -61,7 +61,7 @@ body {
 }
 .mark img {
   display: block;
-  height: 40px;
+  height: 56px;
   width: auto;
 }
 .topnav { display: flex; gap: 36px; }
@@ -666,9 +666,9 @@ footer.foot {
 
 /* PHONE (≤680px) */
 @media (max-width: 680px) {
-  .topbar-inner { padding: 14px 20px; gap: 12px; }
+  .topbar-inner { padding: 12px 20px; gap: 12px; }
   .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
-  .mark .mark-name, .mark .mark-rule { display: none; }
+  .mark img { height: 38px; }
   .nav-toggle-btn { display: inline-flex; margin-left: auto; }
   .topnav {
     display: none;
