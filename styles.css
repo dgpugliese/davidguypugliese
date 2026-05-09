@@ -227,6 +227,7 @@ body {
   object-fit: contain;
   object-position: center bottom;
   display: block;
+  transform: scaleX(-1);
   filter:
     drop-shadow(0 32px 40px rgba(0,0,0,0.50))
     drop-shadow(0 8px 12px rgba(0,0,0,0.32));
