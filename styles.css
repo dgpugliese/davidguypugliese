@@ -209,16 +209,28 @@ body {
 }
 .hero-portrait {
   aspect-ratio: 4/5;
-  background: var(--paper-soft);
-  border: 1px solid var(--on-navy);
   position: relative;
-  overflow: hidden;
-  box-shadow: 24px 32px 64px rgba(0,0,0,0.40), 4px 6px 12px rgba(0,0,0,0.24);
+  overflow: visible;
+}
+.hero-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 12% 8% 4% 8%;
+  background: radial-gradient(ellipse at center, rgba(96,165,250,0.18), transparent 65%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
 }
 .hero-portrait img {
+  position: relative;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
+  filter:
+    drop-shadow(0 32px 40px rgba(0,0,0,0.50))
+    drop-shadow(0 8px 12px rgba(0,0,0,0.32));
+  z-index: 1;
 }
 .hero-portrait-cap {
   margin-top: 18px;
