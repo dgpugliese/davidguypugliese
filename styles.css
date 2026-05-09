@@ -56,18 +56,28 @@ body {
   gap: 32px;
 }
 .mark {
-  display: flex; align-items: baseline; gap: 14px;
+  display: flex; align-items: center; gap: 14px;
   font-family: 'Cormorant Garamond', serif;
   text-decoration: none;
 }
 .mark .monogram {
-  font-weight: 600; font-size: 22px;
+  font-weight: 500; font-size: 24px;
+  font-style: italic;
   letter-spacing: 0.5px;
   color: var(--accent);
 }
+.mark .mark-rule {
+  display: inline-block;
+  width: 1px; height: 22px;
+  background: var(--rule);
+}
 .mark .mark-name {
-  font-size: 16px; font-weight: 500; color: var(--ink);
-  letter-spacing: 0.3px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2.6px;
+  color: var(--ink-soft);
 }
 .topnav { display: flex; gap: 36px; }
 .topnav a {
@@ -673,7 +683,7 @@ footer.foot {
 @media (max-width: 680px) {
   .topbar-inner { padding: 14px 20px; gap: 12px; }
   .topbar .cta { padding: 8px 14px; font-size: 11px; letter-spacing: 1.5px; }
-  .mark .mark-name { display: none; }
+  .mark .mark-name, .mark .mark-rule { display: none; }
   .nav-toggle-btn { display: inline-flex; margin-left: auto; }
   .topnav {
     display: none;
