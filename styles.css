@@ -208,7 +208,7 @@ body {
   align-self: center;
 }
 .hero-portrait {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4/5;
   position: relative;
   overflow: visible;
 }
@@ -226,8 +226,8 @@ body {
 .hero-portrait img {
   position: relative;
   width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
   transform: scaleX(-1);
   filter:
