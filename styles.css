@@ -727,3 +727,53 @@ footer.foot {
   .foot-bot { flex-direction: column; gap: 8px; align-items: flex-start; }
 }
 
+
+/* HERO REVEAL — subtle staggered fade on first paint */
+body.reveal .hero-eyebrow,
+body.reveal .hero-rule,
+body.reveal .hero-tagline,
+body.reveal .hero-actions,
+body.reveal .hero-portrait-wrap,
+body.reveal .hero-name .ltr {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 520ms cubic-bezier(.2,.7,.2,1), transform 520ms cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+body.reveal .hero-name .ltr {
+  display: inline-block;
+  transform: translateY(14px);
+  transition-duration: 620ms;
+  transition-delay: calc(40ms + var(--i) * 28ms);
+}
+body.reveal .hero-eyebrow      { transition-delay: 0ms; }
+body.reveal .hero-rule         { transition-delay: 380ms; transform: scaleX(.2); transform-origin: left; }
+body.reveal .hero-tagline      { transition-delay: 480ms; }
+body.reveal .hero-actions      { transition-delay: 580ms; }
+body.reveal .hero-portrait-wrap { transition-delay: 200ms; transform: translateY(12px); }
+
+body.reveal.reveal-in .hero-eyebrow,
+body.reveal.reveal-in .hero-tagline,
+body.reveal.reveal-in .hero-actions,
+body.reveal.reveal-in .hero-portrait-wrap,
+body.reveal.reveal-in .hero-name .ltr {
+  opacity: 1;
+  transform: translateY(0);
+}
+body.reveal.reveal-in .hero-rule {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.reveal .hero-eyebrow,
+  body.reveal .hero-rule,
+  body.reveal .hero-tagline,
+  body.reveal .hero-actions,
+  body.reveal .hero-portrait-wrap,
+  body.reveal .hero-name .ltr {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

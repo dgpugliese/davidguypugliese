@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="reveal">
 
 <header class="topbar">
   <div class="topbar-inner">
@@ -517,6 +517,45 @@
     });
     nav.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () { setOpen(false); });
+    });
+  })();
+</script>
+
+<script>
+  // Hero reveal: split the name into per-letter spans for a stagger fade.
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.body.classList.remove('reveal');
+      return;
+    }
+    var name = document.querySelector('.hero-name');
+    if (name) {
+      var html = '';
+      var i = 0;
+      Array.from(name.childNodes).forEach(function (node) {
+        if (node.nodeType === 3) {
+          node.textContent.split('').forEach(function (ch) {
+            if (ch === ' ') { html += ' '; return; }
+            html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
+          });
+        } else if (node.nodeName === 'BR') {
+          html += '<br/>';
+        } else if (node.nodeName === 'EM') {
+          html += '<em>';
+          node.textContent.split('').forEach(function (ch) {
+            if (ch === ' ') { html += ' '; return; }
+            html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
+          });
+          html += '</em>';
+        }
+      });
+      name.innerHTML = html;
+    }
+    // Trigger reveal on next frame so initial styles apply first.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        document.body.classList.add('reveal-in');
+      });
     });
   })();
 </script>
