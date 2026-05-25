@@ -30,7 +30,26 @@ html.dark {
   --rule: #1e293b;
   --rule-soft: #0f172a;
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --navy: #1e3a5f;
+    --navy-deep: #0a1f3d;
+    --navy-bright: #2d4f7a;
+    --accent: #c9a877;
+    --accent-bright: #e3c897;
+    --paper: #050a14;
+    --paper-soft: #0a1224;
+    --on-navy: #f1f5f9;
+    --on-navy-soft: #cbd5e1;
+    --ink: #f1f5f9;
+    --ink-soft: #cbd5e1;
+    --ink-mute: #94a3b8;
+    --rule: #1e293b;
+    --rule-soft: #0f172a;
+  }
+}
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 body {
   font-family: 'Inter', -apple-system, sans-serif;
