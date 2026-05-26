@@ -728,52 +728,76 @@ footer.foot {
 }
 
 
-/* HERO REVEAL — subtle staggered fade on first paint */
-body.reveal .hero-eyebrow,
-body.reveal .hero-rule,
-body.reveal .hero-tagline,
-body.reveal .hero-actions,
-body.reveal .hero-portrait-wrap,
+/* HERO SPLASH */
+.hero-splash {
+  min-height: calc(100vh - 92px);
+  min-height: calc(100svh - 92px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 64px 56px 96px;
+  position: relative; z-index: 1; text-align: center;
+}
+.hero-splash .hero-name { margin: 0; text-align: center; font-size: clamp(72px, 14vw, 200px); }
+.hero-scroll-hint {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--on-navy); opacity: 0.55;
+}
+.hero-scroll-hint .ln {
+  width: 1px; height: 36px; background: var(--on-navy); opacity: 0.6;
+  animation: scroll-pulse 2.2s ease-in-out infinite; transform-origin: top;
+}
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.2; }
+  50%      { transform: scaleY(1);   opacity: 0.8; }
+}
+@media (max-width: 720px) {
+  .hero-splash { padding: 48px 24px 80px; }
+  .hero-scroll-hint { bottom: 24px; }
+}
+
+/* HERO LOAD REVEAL — per-letter stagger on the splash wordmark */
 body.reveal .hero-name .ltr {
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 520ms cubic-bezier(.2,.7,.2,1), transform 520ms cubic-bezier(.2,.7,.2,1);
+  transform: translateY(14px);
+  display: inline-block;
+  transition: opacity 620ms cubic-bezier(.2,.7,.2,1), transform 620ms cubic-bezier(.2,.7,.2,1);
+  transition-delay: calc(40ms + var(--i) * 28ms);
   will-change: opacity, transform;
 }
-body.reveal .hero-name .ltr {
-  display: inline-block;
-  transform: translateY(14px);
-  transition-duration: 620ms;
-  transition-delay: calc(40ms + var(--i) * 28ms);
-}
-body.reveal .hero-eyebrow      { transition-delay: 0ms; }
-body.reveal .hero-rule         { transition-delay: 380ms; transform: scaleX(.2); transform-origin: left; }
-body.reveal .hero-tagline      { transition-delay: 480ms; }
-body.reveal .hero-actions      { transition-delay: 580ms; }
-body.reveal .hero-portrait-wrap { transition-delay: 200ms; transform: translateY(12px); }
-
-body.reveal.reveal-in .hero-eyebrow,
-body.reveal.reveal-in .hero-tagline,
-body.reveal.reveal-in .hero-actions,
-body.reveal.reveal-in .hero-portrait-wrap,
 body.reveal.reveal-in .hero-name .ltr {
   opacity: 1;
   transform: translateY(0);
 }
-body.reveal.reveal-in .hero-rule {
-  opacity: 1;
-  transform: scaleX(1);
+
+/* SCROLL REVEAL SYSTEM */
+.reveal-on-scroll {
+  opacity: 0;
+  transition:
+    opacity   680ms cubic-bezier(.2,.7,.2,1),
+    transform 680ms cubic-bezier(.2,.7,.2,1);
+  transition-delay: var(--rd, 0ms);
+  will-change: opacity, transform;
 }
+.reveal-on-scroll.slide-up    { transform: translateY(28px); }
+.reveal-on-scroll.slide-left  { transform: translateX(32px); }
+.reveal-on-scroll.grow        { transform: scaleX(.2); transform-origin: left; }
+.reveal-on-scroll.flip-in     { transform: perspective(800px) rotateX(14deg) translateY(20px); transform-origin: top; }
+.reveal-on-scroll.fade        { /* opacity only */ }
+.reveal-on-scroll.door-swing  {
+  transform: perspective(1400px) rotateY(-82deg);
+  transform-origin: right center;
+  transition:
+    opacity   900ms cubic-bezier(.2,.7,.2,1),
+    transform 1100ms cubic-bezier(.18,.85,.25,1);
+  transition-delay: var(--rd, 0ms);
+}
+.reveal-on-scroll.is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  body.reveal .hero-eyebrow,
-  body.reveal .hero-rule,
-  body.reveal .hero-tagline,
-  body.reveal .hero-actions,
-  body.reveal .hero-portrait-wrap,
-  body.reveal .hero-name .ltr {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
+  .reveal-on-scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-scroll-hint .ln { animation: none; }
+  body.reveal .hero-name .ltr { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
