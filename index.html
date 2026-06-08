@@ -531,7 +531,6 @@
     function setOpen(open) {
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       nav.classList.toggle('open', open);
-      document.body.classList.toggle('nav-open', open);
     }
     btn.addEventListener('click', function () {
       setOpen(btn.getAttribute('aria-expanded') !== 'true');
