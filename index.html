@@ -570,20 +570,20 @@
     if (name) {
       var html = '';
       var i = 0;
+      function appendChars(text) {
+        text.split('').forEach(function (ch) {
+          if (ch === ' ') { html += ' '; return; }
+          html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
+        });
+      }
       Array.from(name.childNodes).forEach(function (node) {
         if (node.nodeType === 3) {
-          node.textContent.split('').forEach(function (ch) {
-            if (ch === ' ') { html += ' '; return; }
-            html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
-          });
+          appendChars(node.textContent);
         } else if (node.nodeName === 'BR') {
           html += '<br/>';
         } else if (node.nodeName === 'EM') {
           html += '<em>';
-          node.textContent.split('').forEach(function (ch) {
-            if (ch === ' ') { html += ' '; return; }
-            html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
-          });
+          appendChars(node.textContent);
           html += '</em>';
         }
       });
