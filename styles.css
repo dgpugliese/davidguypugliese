@@ -783,32 +783,67 @@ footer.foot {
     linear-gradient(180deg, rgba(6,19,39,0.22), transparent 38%, rgba(6,19,39,0.62));
 }
 .intro-frame-final {
-  animation: intro-final-frame 2700ms cubic-bezier(.2,.7,.2,1) var(--d) both;
+  animation: intro-final-frame 2500ms cubic-bezier(.2,.7,.2,1) var(--d) both;
 }
-.intro-grid {
+.intro-frame-final img {
+  object-position: 36% center;
+}
+.intro-words {
   position: absolute;
-  inset: 9% 7%;
+  inset: 0;
   z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  opacity: 0.72;
-  transform: skewY(-3deg);
   pointer-events: none;
 }
-.intro-grid span {
-  min-height: 70vh;
-  background-image: var(--tile);
-  background-size: cover;
-  background-position: center;
-  border-left: 1px solid rgba(212,178,126,0.16);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.34);
+.intro-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   opacity: 0;
-  transform: translateY(30px) rotateY(-50deg);
-  transform-origin: left center;
-  filter: saturate(0.74) contrast(1.05) brightness(0.78);
-  animation: intro-tile-flip 1000ms cubic-bezier(.2,.7,.2,1) var(--td) both;
+  color: var(--on-navy);
+  white-space: nowrap;
+  text-shadow: 0 18px 42px rgba(0,0,0,0.48);
+  transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px))) rotate(var(--r, 0deg)) scale(0.94);
+  animation: intro-word-flash 860ms cubic-bezier(.18,.8,.2,1) var(--d) both;
+  will-change: opacity, transform, filter;
+}
+.word-xl {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: clamp(64px, 11vw, 180px);
+  font-weight: 600;
+  line-height: 0.88;
+  letter-spacing: 0;
+  color: rgba(241,245,249,0.94);
+}
+.word-say {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(13px, 2.1vw, 28px);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(212,178,126,0.92);
+}
+.word-wall {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(56px, 10vw, 148px);
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0;
+  color: rgba(241,245,249,0.90);
+  mix-blend-mode: screen;
+}
+.word-wall-1 { --x: -24vw; --y: -10vh; --r: -3deg; }
+.word-wall-2 { --x: 19vw; --y: -1vh; --r: 3deg; }
+.word-wall-3 { --x: -3vw; --y: 16vh; --r: -1deg; color: rgba(212,178,126,0.92); }
+.intro-word::after {
+  content: "";
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,178,126,0.72), transparent);
+  opacity: 0;
+  transform: scaleX(0.2);
+  animation: intro-word-rule 860ms cubic-bezier(.18,.8,.2,1) var(--d) both;
 }
 .intro-scan {
   position: absolute;
@@ -839,13 +874,13 @@ footer.foot {
   text-stroke: 1px rgba(241,245,249,0.68);
   background:
     linear-gradient(135deg, rgba(241,245,249,0.92), rgba(212,178,126,0.78) 42%, rgba(241,245,249,0.86)),
-    url('public/intro/intro-06-white-jacket.jpg') center/cover;
+    url('public/intro/intro-12-tattoo-finale.jpg') center/cover;
   -webkit-background-clip: text;
   background-clip: text;
   opacity: 0;
   transform: scale(1.16) rotateX(12deg);
   filter: drop-shadow(0 30px 44px rgba(0,0,0,0.52));
-  animation: intro-initials-in 1250ms cubic-bezier(.15,.82,.2,1) 2860ms forwards;
+  animation: intro-initials-in 1250ms cubic-bezier(.15,.82,.2,1) 4080ms forwards;
 }
 .hero-splash .intro-name {
   margin: 0;
@@ -908,15 +943,31 @@ body.intro-complete .intro-sequence .hero-scroll-hint {
     clip-path: inset(0 0 0 0);
   }
   100% {
-    opacity: 0.28;
+    opacity: 0.56;
     transform: translate3d(0, 0, 0) rotateY(0deg) rotateZ(0deg) scale(1.05);
   }
 }
-@keyframes intro-tile-flip {
-  0% { opacity: 0; transform: translateY(30px) rotateY(-50deg); }
-  25% { opacity: 0.78; }
-  72% { opacity: 0.66; transform: translateY(0) rotateY(0deg); }
-  100% { opacity: 0; transform: translateY(-24px) rotateY(34deg); }
+@keyframes intro-word-flash {
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px))) rotate(var(--r, 0deg)) scale(0.92);
+  }
+  16%, 62% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px))) rotate(var(--r, 0deg)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(9px);
+    transform: translate(calc(-50% + var(--x, 0px)), calc(-50% + var(--y, 0px) - 18px)) rotate(var(--r, 0deg)) scale(1.05);
+  }
+}
+@keyframes intro-word-rule {
+  0%, 8% { opacity: 0; transform: scaleX(0.2); }
+  30%, 58% { opacity: 0.42; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(0.4); }
 }
 @keyframes intro-scan {
   0% { opacity: 0; transform: translateY(-4%); }
@@ -934,8 +985,12 @@ body.intro-complete .intro-sequence .hero-scroll-hint {
 }
 @media (max-width: 720px) {
   .hero-splash { padding: 48px 24px 80px; }
-  .intro-grid { inset: 8% 5%; grid-template-columns: repeat(3, 1fr); gap: 7px; }
-  .intro-grid span { min-height: 32vh; }
+  .word-xl { font-size: clamp(48px, 18vw, 84px); }
+  .word-say { font-size: clamp(11px, 3.4vw, 18px); letter-spacing: 0.14em; }
+  .word-wall { font-size: clamp(42px, 16vw, 76px); }
+  .word-wall-1 { --x: -12vw; --y: -18vh; }
+  .word-wall-2 { --x: 8vw; --y: -2vh; }
+  .word-wall-3 { --x: -2vw; --y: 16vh; }
   .intro-initials { font-size: clamp(88px, 32vw, 150px); }
   .hero-splash .intro-name { font-size: clamp(48px, 16vw, 84px); }
   .hero-scroll-hint { bottom: 24px; }
@@ -982,13 +1037,13 @@ body.reveal.reveal-in .intro-name .ltr {
 @media (prefers-reduced-motion: reduce) {
   .intro-frame,
   .intro-frame-final,
-  .intro-grid span,
+  .intro-word,
   .intro-scan,
   .intro-initials {
     animation: none !important;
   }
   .intro-frame-final { opacity: 0.26; transform: none; clip-path: none; }
-  .intro-grid, .intro-scan { display: none; }
+  .intro-words, .intro-scan { display: none; }
   .intro-initials { opacity: 0.95; transform: none; }
   .intro-sequence .hero-scroll-hint { opacity: 0.72; transform: translate(-50%, 0); pointer-events: auto; }
   .reveal-on-scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
