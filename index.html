@@ -46,12 +46,52 @@
 </header>
 
 <section class="hero">
-  <div class="hero-splash">
-    <h1 class="hero-name">David<br/><em>Pugliese.</em></h1>
-    <div class="hero-scroll-hint" aria-hidden="true">
+  <div class="hero-splash intro-sequence" data-intro>
+    <div class="intro-film" aria-hidden="true">
+      <figure class="intro-frame intro-frame-01" style="--d:0ms; --sx:-8%; --sy:2%; --rz:-5deg; --pos:center;">
+        <img src="public/intro/intro-01-office-portrait.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-02" style="--d:340ms; --sx:7%; --sy:-3%; --rz:4deg; --pos:center 35%;">
+        <img src="public/intro/intro-03-laptop.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-03" style="--d:680ms; --sx:-5%; --sy:-2%; --rz:5deg; --pos:center;">
+        <img src="public/intro/intro-05-console.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-04" style="--d:1020ms; --sx:6%; --sy:2%; --rz:-3deg; --pos:center 34%;">
+        <img src="public/intro/intro-02-headshot.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-05" style="--d:1360ms; --sx:-7%; --sy:3%; --rz:3deg; --pos:center;">
+        <img src="public/intro/intro-06-white-jacket.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-06" style="--d:1700ms; --sx:5%; --sy:-3%; --rz:-4deg; --pos:center 42%;">
+        <img src="public/intro/intro-04-desk.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-07" style="--d:2040ms; --sx:-4%; --sy:-2%; --rz:4deg; --pos:center;">
+        <img src="public/intro/intro-07-presentation.jpg" alt="" />
+      </figure>
+      <figure class="intro-frame intro-frame-final" style="--d:2380ms; --sx:3%; --sy:1%; --rz:-2deg; --pos:center;">
+        <img src="public/intro/intro-05-console.jpg" alt="" />
+      </figure>
+      <div class="intro-grid">
+        <span style="--tile: url('public/intro/intro-03-laptop.jpg'); --td: 120ms;"></span>
+        <span style="--tile: url('public/intro/intro-06-white-jacket.jpg'); --td: 260ms;"></span>
+        <span style="--tile: url('public/intro/intro-01-office-portrait.jpg'); --td: 420ms;"></span>
+        <span style="--tile: url('public/intro/intro-07-presentation.jpg'); --td: 580ms;"></span>
+        <span style="--tile: url('public/intro/intro-04-desk.jpg'); --td: 740ms;"></span>
+        <span style="--tile: url('public/intro/intro-08-cutout.jpg'); --td: 900ms;"></span>
+      </div>
+      <div class="intro-scan"></div>
+    </div>
+
+    <div class="intro-lockup">
+      <div class="intro-initials" aria-hidden="true">DGP</div>
+      <h1 class="hero-name intro-name">David<br/><em>Pugliese.</em></h1>
+    </div>
+
+    <a class="hero-scroll-hint" href="#about" aria-label="Scroll to about section">
       <span class="lbl">Scroll</span>
       <span class="ln"></span>
-    </div>
+    </a>
   </div>
   <div class="hero-inner">
     <div>
@@ -559,13 +599,15 @@
 </script>
 
 <script>
-  // Hero reveal: split the name into per-letter spans for a stagger fade.
+  // Intro reveal: split the name into per-letter spans after the montage resolves.
   (function () {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.body.classList.remove('reveal');
+      document.body.classList.add('intro-complete');
       return;
     }
-    var name = document.querySelector('.hero-name');
+    var intro = document.querySelector('[data-intro]');
+    var name = document.querySelector('.intro-name');
     if (name) {
       var html = '';
       var i = 0;
@@ -588,10 +630,18 @@
       });
       name.innerHTML = html;
     }
-    // Trigger reveal on next frame so initial styles apply first.
+    var revealDelay = intro ? 3720 : 40;
+    var completeDelay = intro ? 5100 : 0;
+
+    // Trigger reveal after the photo sequence so the lockup lands as the finale.
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        document.body.classList.add('reveal-in');
+        window.setTimeout(function () {
+          document.body.classList.add('reveal-in');
+        }, revealDelay);
+        window.setTimeout(function () {
+          document.body.classList.add('intro-complete');
+        }, completeDelay);
       });
     });
   })();
