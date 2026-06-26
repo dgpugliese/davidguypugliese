@@ -97,8 +97,8 @@ body {
   max-width: 1320px; margin: 0 auto;
   padding: 120px 56px 96px;
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
+  grid-template-columns: minmax(0, 760px);
+  gap: 0;
   position: relative;
   z-index: 1;
 }
@@ -137,7 +137,7 @@ body {
   font-size: 26px; font-weight: 400;
   line-height: 1.45;
   color: var(--on-navy);
-  max-width: 560px;
+  max-width: 680px;
   margin-bottom: 48px;
 }
 .hero-tagline em { font-style: italic; color: var(--accent-bright); }
@@ -180,49 +180,6 @@ body {
   opacity: 1; background: rgba(255,255,255,0.08);
   box-shadow: 0 4px 12px rgba(0,0,0,0.20);
   transform: translateY(-1px);
-}
-
-.hero-portrait-wrap {
-  position: relative;
-  align-self: center;
-}
-.hero-portrait {
-  aspect-ratio: 4/5;
-  position: relative;
-  overflow: visible;
-}
-.hero-portrait::before {
-  content: "";
-  position: absolute;
-  inset: 4% -6% -4% -6%;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 38%, rgba(212,178,126,0.36), transparent 70%),
-    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(176,141,87,0.20), transparent 75%);
-  filter: blur(28px);
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-portrait img {
-  position: relative;
-  width: 100%; height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
-  display: block;
-  transform: scaleX(-1);
-  filter:
-    drop-shadow(0 32px 40px rgba(0,0,0,0.50))
-    drop-shadow(0 8px 12px rgba(0,0,0,0.32));
-  z-index: 1;
-}
-.hero-portrait-cap {
-  margin-top: 18px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--on-navy);
-  opacity: 0.7;
-  text-align: right;
 }
 
 /* HERO STAT BAR */
@@ -635,7 +592,6 @@ footer.foot {
 @media (max-width: 1000px) {
   .topbar-inner, .hero-inner, .hero-stats-inner, section.s, .foot-inner { padding-left: 28px; padding-right: 28px; }
   .hero-inner { grid-template-columns: 1fr; gap: 48px; padding-top: 64px; padding-bottom: 56px; }
-  .hero-portrait-wrap { max-width: 380px; margin: 0 auto; width: 100%; }
   .hero-stats-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
   .s-head, .about-grid { grid-template-columns: 1fr; gap: 18px; }
   .xp-row { grid-template-columns: 1fr; gap: 18px; }
@@ -682,8 +638,6 @@ footer.foot {
   .hero-tagline { font-size: 20px; margin-bottom: 32px; }
   .hero-actions { gap: 12px; }
   .btn-primary, .btn-ghost { padding: 12px 18px; font-size: 11px; letter-spacing: 1.8px; }
-  .hero-portrait-wrap { max-width: 280px; }
-  .hero-portrait-cap { font-size: 9px; text-align: center; }
 
   .hero-stats-inner { grid-template-columns: 1fr 1fr; gap: 20px; padding: 28px 20px; }
   .hstat .num { font-size: 32px; }
