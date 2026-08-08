@@ -65,44 +65,7 @@
 </header>
 
 <section class="hero">
-  <div class="hero-splash intro-sequence" data-intro>
-    <div class="intro-film" aria-hidden="true">
-      <figure class="intro-frame intro-photo-phase" style="--d:70ms; --sx:-34vw; --sy:-8vh; --rz:-5deg; --pos:center; --clip-start:inset(0 100% 0 0);">
-        <img src="public/intro/intro-03-laptop.jpg" alt="" />
-      </figure>
-      <figure class="intro-frame intro-photo-phase" style="--d:340ms; --sx:32vw; --sy:7vh; --rz:4deg; --pos:center; --clip-start:inset(0 0 0 100%);">
-        <img src="public/intro/intro-04-desk.jpg" alt="" />
-      </figure>
-      <figure class="intro-frame intro-photo-phase" style="--d:610ms; --sx:4vw; --sy:38vh; --rz:4deg; --pos:center; --clip-start:inset(100% 0 0 0);">
-        <img src="public/intro/intro-05-console.jpg" alt="" />
-      </figure>
-      <figure class="intro-frame intro-photo-phase" style="--d:880ms; --sx:-28vw; --sy:28vh; --rz:-4deg; --pos:center; --clip-start:inset(100% 100% 0 0);">
-        <img src="public/intro/intro-01-office-portrait.jpg" alt="" />
-      </figure>
-      <figure class="intro-frame intro-photo-phase" style="--d:1150ms; --sx:24vw; --sy:-30vh; --rz:-3deg; --pos:center; --clip-start:inset(0 0 100% 100%);">
-        <img src="public/intro/intro-02-headshot.jpg" alt="" />
-      </figure>
-      <figure class="intro-frame intro-photo-phase" style="--d:1420ms; --sx:-8vw; --sy:-38vh; --rz:5deg; --pos:center; --clip-start:inset(0 0 100% 0);">
-        <img src="public/intro/intro-07-presentation.jpg" alt="" />
-      </figure>
-      <figure class="intro-frame intro-frame-final" style="--d:6780ms; --sx:0vw; --sy:4vh; --rz:0deg; --pos:center; --clip-start:inset(0 0 0 0);">
-        <img src="public/intro/intro-06-white-jacket.jpg" alt="" />
-      </figure>
-      <div class="intro-words">
-        <span class="intro-word word-command command-1" style="--d:5480ms; --x:0vw; --y:-8vh; --r:0deg;">Govern the data.</span>
-        <span class="intro-word word-command command-2" style="--d:5900ms; --x:0vw; --y:8vh; --r:0deg;">Empower the team.</span>
-      </div>
-      <div class="intro-scan"></div>
-    </div>
-    <div class="intro-blackout" aria-hidden="true"></div>
-    <div class="intro-caption-stream" aria-hidden="true">
-      <span class="frame-saying final-saying" style="--d:1980ms;">Strategy without execution is a hallucination.</span>
-      <span class="frame-saying final-saying" style="--d:2760ms;">Automate the predictable. Humanize the exceptional.</span>
-      <span class="frame-saying final-saying" style="--d:3540ms;">De-escalate. Update. Automate.</span>
-      <span class="frame-saying final-saying" style="--d:4320ms;">Smarter tech. Stronger teams.</span>
-    </div>
-    <div class="intro-flash"></div>
-
+  <div class="hero-splash initials-only">
     <div class="intro-lockup">
       <div class="intro-initials" aria-hidden="true">DGP</div>
       <h1 class="hero-name intro-name" aria-label="David Guy Pugliese">David Guy<br/><em>Pugliese.</em></h1>
@@ -621,63 +584,6 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
     targets.forEach(function (el) { io.observe(el); });
-  })();
-</script>
-
-<script>
-  // Intro reveal: split the name into per-letter spans after the montage resolves.
-  (function () {
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.body.classList.remove('reveal');
-      document.body.classList.add('intro-complete');
-      return;
-    }
-    var intro = document.querySelector('[data-intro]');
-    var name = document.querySelector('.intro-name');
-    if (name) {
-      var html = '';
-      var i = 0;
-      Array.from(name.childNodes).forEach(function (node) {
-        if (node.nodeType === 3) {
-          node.textContent.split('').forEach(function (ch) {
-            if (ch === ' ') { html += ' '; return; }
-            html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
-          });
-        } else if (node.nodeName === 'BR') {
-          html += '<br/>';
-        } else if (node.nodeName === 'EM') {
-          html += '<em>';
-          node.textContent.split('').forEach(function (ch) {
-            if (ch === ' ') { html += ' '; return; }
-            html += '<span class="ltr" style="--i:' + (i++) + '">' + ch + '</span>';
-          });
-          html += '</em>';
-        }
-      });
-      name.innerHTML = html;
-    }
-    var revealDelay = intro ? 7040 : 40;
-    var completeDelay = intro ? 8300 : 0;
-
-    function startIntro() {
-      document.body.classList.add('intro-ready');
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          window.setTimeout(function () {
-            document.body.classList.add('reveal-in');
-          }, revealDelay);
-          window.setTimeout(function () {
-            document.body.classList.add('intro-complete');
-          }, completeDelay);
-        });
-      });
-    }
-
-    if (document.readyState === 'complete') {
-      startIntro();
-    } else {
-      window.addEventListener('load', startIntro, { once: true });
-    }
   })();
 </script>
 

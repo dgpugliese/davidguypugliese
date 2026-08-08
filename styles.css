@@ -731,6 +731,25 @@ footer.foot {
 
 
 /* HERO SPLASH */
+.initials-only {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(212,178,126,0.14), transparent 52%),
+    linear-gradient(135deg, rgba(6,19,39,0.98), rgba(10,31,61,0.94));
+}
+.initials-only .intro-lockup::before {
+  animation: none;
+  opacity: 0.2;
+}
+.initials-only .intro-initials {
+  opacity: 0.96;
+  transform: none;
+  animation: none;
+}
+.initials-only .hero-scroll-hint {
+  opacity: 0.86;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
 .hero-splash {
   min-height: 100vh;
   min-height: 100svh;
